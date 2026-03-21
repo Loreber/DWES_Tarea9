@@ -1,0 +1,535 @@
+/* Estilos principales de Animeoteca */
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tema general oscuro y layout vertical de toda la app */
+body {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #0f0f1a;
+  color: #eaeaea;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilo base para enlaces */
+a {
+  color: #e94560;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #c73652;
+}
+
+/* Evita desbordes y espacios extra en imágenes */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Contenedor */
+.contenedor {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Barra de navegación */
+nav {
+  background: #1a1a2e;
+  border-bottom: 1px solid #2a2a4a;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Distribuye logo y formulario en una sola fila */
+.nav-contenido {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.logo {
+  color: #ffb0de;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.logo:hover {
+  color: #e94560;
+}
+
+/* Formulario de búsqueda */
+.formulario-busqueda {
+  display: flex;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.campo-busqueda {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  padding: 6px 12px;
+  border: 1px solid #2a2a4a;
+  border-radius: 6px 0 0 6px;
+  background: #16213e;
+  color: #eaeaea;
+  outline: none;
+  width: 200px;
+}
+
+.campo-busqueda::placeholder {
+  color: #9a9abf;
+}
+
+.campo-busqueda:focus {
+  border-color: #e94560;
+  width: 260px;
+}
+
+.boton-busqueda {
+  padding: 6px 10px;
+  border: 1px solid #2a2a4a;
+  border-left: none;
+  border-radius: 0 6px 6px 0;
+  background: #0f0f1a;
+  color: #9a9abf;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.boton-busqueda:hover {
+  background: #e94560;
+  color: #fff;
+  border-color: #e94560;
+}
+
+/* Contenido principal */
+main {
+  flex: 1;
+  margin-top: 40px;
+  margin-bottom: 80px;
+  padding-top: 24px;
+}
+
+/* Sección hero */
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-titulo {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #ff012b, #ff00ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-subtitulo {
+  color: #9a9abf;
+  margin-top: 8px;
+  font-size: 1.05rem;
+}
+
+/* Cabecera de búsqueda */
+.cabecera-busqueda {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.titulo-busqueda {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin-top: 24px;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.subtitulo-busqueda {
+  color: #9a9abf;
+  margin-top: 32px;
+}
+
+/* Alerta de error */
+.alerta-error {
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  background: rgba(233, 69, 96, 0.15);
+  border: 1px solid #e94560;
+  color: #f7a8b8;
+}
+
+/* Cuadrícula de tarjetas */
+.cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+/* Tarjeta vertical con animación suave al pasar el ratón */
+.tarjeta {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  border-radius: 12px;
+  overflow: hidden;
+  color: #eaeaea;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  color: #eaeaea;
+  border-color: #e94560;
+}
+
+/* Mantiene una proporción de póster uniforme */
+.tarjeta-img-contenedor {
+  position: relative;
+  aspect-ratio: 225 / 320;
+  overflow: hidden;
+  background: #16213e;
+}
+
+.tarjeta-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.25s ease;
+}
+
+.tarjeta:hover .tarjeta-img {
+  transform: scale(1.05);
+}
+
+.tarjeta-puntuacion {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(15, 15, 26, 0.85);
+  color: #ffd700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.tarjeta-cuerpo {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tarjeta-titulo {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.tarjeta-meta {
+  font-size: 0.80rem;
+  color: #9a9abf;
+}
+
+.tarjeta-generos {
+  font-size: 0.80rem;
+  color: #ff00ff;
+  margin-top: auto;
+}
+
+/* Paginación */
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.boton-pagina {
+  background: #1a1a2e;
+  border: 1px solid #2a2a4a;
+  padding: 8px 24px;
+  border-radius: 6px;
+  color: #eaeaea;
+  font-weight: 500;
+}
+
+.boton-pagina:hover {
+  background: #e94560;
+  border-color: #e94560;
+  color: #fff;
+}
+
+.info-pagina {
+  color: #9a9abf;
+  font-size: 0.9rem;
+}
+
+/* Estado vacío */
+.estado-vacio {
+  text-align: center;
+  color: #9a9abf;
+  padding: 40px 0;
+  font-size: 1.1rem;
+}
+
+/* Página de detalle */
+.enlace-volver {
+  display: inline-block;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  color: #9a9abf;
+  font-size: 0.9rem;
+}
+
+.enlace-volver:hover {
+  color: #e94560;
+}
+
+/* Estructura de dos columnas: póster y datos */
+.detalle-cabecera {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.detalle-poster {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  align-self: start;
+}
+
+.detalle-imagen {
+  width: 100%;
+  height: auto;
+}
+
+.detalle-titulo {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.detalle-subtitulo {
+  color: #9a9abf;
+  font-size: 1rem;
+  margin-top: 4px;
+}
+
+.detalle-etiquetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.etiqueta {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #16213e;
+  border: 1px solid #2a2a4a;
+  color: #9a9abf;
+}
+
+.etiqueta-puntuacion {
+  background: rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+  color: #ffd700;
+  font-weight: 700;
+}
+
+/* Tabla simple de metadatos del anime */
+.detalle-tabla {
+  width: 100%;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  border-collapse: collapse;
+}
+
+.detalle-tabla th {
+  text-align: left;
+  color: #9a9abf;
+  padding: 6px 16px 6px 0;
+  white-space: nowrap;
+  width: 120px;
+  font-weight: 500;
+}
+
+.detalle-tabla td {
+  padding: 6px 0;
+}
+
+.detalle-estadisticas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.estadistica {
+  text-align: center;
+}
+
+.estadistica-valor {
+  display: block;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #e94560;
+}
+
+.estadistica-etiqueta {
+  font-size: 0.78rem;
+  color: #9a9abf;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.detalle-seccion {
+  margin-bottom: 40px;
+}
+
+.detalle-sinopsis {
+  font-size: 0.95rem;
+  color: #C5C5E0;
+  line-height: 1.7;
+}
+
+.detalle-seccion h2 {
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #2a2a4a;
+}
+
+.enlaces-streaming {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.enlace-streaming {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: #533483;
+  border: 1px solid #533483;
+  color: #fff;
+}
+
+.enlace-streaming:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+
+.enlace-mal {
+  display: inline-block;
+  padding: 8px 24px;
+  background: #e94560;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.enlace-mal:hover {
+  background: #c73652;
+  color: #fff;
+}
+
+/* Pie de página */
+footer {
+  background: #1a1a2e;
+  border-top: 1px solid #2a2a4a;
+  padding: 24px 0;
+  margin-top: auto;
+}
+
+.pie-contenido {
+  text-align: center;
+  font-size: 1rem;
+  color: #9a9abf;
+}
+
+.pie-contenido a {
+  color: #e94560;
+}
+
+.pie-nota {
+  margin-top: 4px;
+  font-size: 0.90rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+  /* Ajustes para tablets y móviles grandes */
+  .detalle-cabecera {
+    grid-template-columns: 1fr;
+  }
+
+  .detalle-poster {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .cuadricula {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 16px;
+  }
+
+  .campo-busqueda {
+    width: 140px;
+  }
+
+  .campo-busqueda:focus {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Ajustes compactos para móviles pequeños */
+  .formulario-busqueda {
+    margin-left: auto;
+  }
+
+  .cuadricula {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
